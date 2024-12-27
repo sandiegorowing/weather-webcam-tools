@@ -7,6 +7,7 @@ There is a raspberry pi that runs software to perform the following functions:
 *    Start the service at boot and restart automatically if necessary.
 *    Monitor the webstream and send an email if it appears to be down.
 *    Take a snapshot still image from the RTSP web stream, retrieve and publish the snapshot for use by ambientweather.net.
+*    Sends data from the Ambient Weather WS-2902 weather stations via MQTT using (ambient2mqtt)[https://github.com/dkoneill/ambient2mqtt]
 
 # Video
 
@@ -75,7 +76,7 @@ As root, do the following:
 
 Sometimes the ffmpeg streamer will continue to stream successfully to
 the YouTube live endpoint, but the YouTube live stream itself has
-expired. A python script named webcam-monitor.py was created to
+expired. A python script named (webcam-monitor.py)[webcam-monitor.py] was created to
 monitor the output of the stream and report by email if a failure was
 detected using the streamlink program that can be installed via apt
 get. There may be better ways to accomplish this task using the Google
@@ -98,3 +99,14 @@ cd $HOME
 ```
 */2 * * * * /home/admin/snapshot.sh
 ```
+
+## Generating weather widgets and graphs for the website
+
+The (ambient2mqtt)[https://github.com/dkoneill/ambient2mqtt] service described above sends data via the MQTT
+protocol to an IoT server. That IoT server runs telegraf which injests
+the data into influxDB. Grafana is set up to read the data from
+influxDB and the following bash script queries that Grafana instance
+to generate static images of selected metrics
+
+See (baytemp.sh)[baytemp.sh] for details
+
