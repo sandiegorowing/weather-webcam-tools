@@ -1,8 +1,19 @@
 # weather-webcam-tools
-All of the scripts and instructions for webcam relay to YouTube and Ambient Weather conversion to MQTT
+All of the scripts and instructions for webcam relay to YouTube and
+Ambient Weather conversion to MQTT to support the San Diego Rowing
+Club weather page at [SDRC Weather](https://sandiegorowing.org/weather)
+
+The information here should work with any camera that is attached to a
+TCP/IP network and supports RTSP URL's. The weather data instructions
+are designed for an Ambient Weather WS2902 weather station. Similar,
+but different methoda are required to support other types of
+stations. For example, if one has an eccowitt WittBoy or Tempest
+station, the [ecowitt2mqtt](https://github.com/bachya/ecowitt2mqtt)
+software would be worth considering rather than the
+[ambient2mqtt](https://github.com/dkoneill/ambient2mqtt) referenced below.
 
 # Overview
-There is a raspberry pi that runs software to perform the following functions:
+There is a raspberry pi 4B+ that runs software to perform the following functions:
 *    Convert an RTSP stream using ffmpeg for delivery to YouTube's live streaming end point.
 *    Start the service at boot and restart automatically if necessary.
 *    Monitor the webstream and send an email if it appears to be down.
