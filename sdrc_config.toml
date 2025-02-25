@@ -1,0 +1,11 @@
+[http]
+    port = 2466
+
+[mqtt]
+    broker_host = "iot.example.com"
+    broker_port = 1883
+    broker_username = "weather"
+    broker_password = "abc123"
+    client_id = "SDRC_ws2902"
+    topic_prefix = "SDRC/sensor/weather"
+    topic = "station1"

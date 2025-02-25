@@ -1,0 +1,15 @@
+#
+# Installed in /lib/systemd/system/webcam.service
+#
+[Unit]
+Description=Webcam RTSP to Youtube transcoder
+After=network.service
+
+[Service]
+User=admin
+Type=simple
+ExecStart=/bin/bash /home/admin/webcam.sh
+Restart=always
+RestartSec=90
+[Install]
+WantedBy=multi-user.target
